@@ -1,0 +1,24 @@
+{
+  "name": "cypress_trial",
+  "version": "1.0.0",
+  "description": "Trying out cypress automation",
+  "main": "index.js",
+  "scripts": {
+    "login/test": "npx cypress open",
+    "login-test": "npx cypress run  --spec 'cypress/e2e/spec.cy.js' --browser chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LFarparan/cypress_Trial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LFarparan/cypress_Trial/issues"
+  },
+  "homepage": "https://github.com/LFarparan/cypress_Trial#readme",
+  "devDependencies": {
+    "cypress": "^14.2.1"
+  }
+}
