@@ -3,7 +3,7 @@ describe('Log In', () => {
     cy.visit('https://www.saucedemo.com/'); // Runs before every test
   });
 
-  it('Verify login with valid credentials', () => {
+  it('Sucessful login with valid credentials', () => {
     cy.get('[data-test="username"]').type('standard_user')
     cy.get('[data-test="password"]').type('secret_sauce')
     cy.get('[data-test="login-button"]').click()
@@ -11,7 +11,7 @@ describe('Log In', () => {
     cy.url().should("include", '/inventory.html')
   })
 
-  it('Verify login with invalid login credentials', () => {
+  it('Unsuccessful login with invalid login credentials', () => {
     cy.get('[data-test="username"]').type('standard_user')
     cy.get('[data-test="password"]').type('ehetenandayo')
     cy.get('[data-test="login-button"]').click()

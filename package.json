@@ -4,8 +4,8 @@
   "description": "Trying out cypress automation",
   "main": "index.js",
   "scripts": {
-    "login/test": "npx cypress open",
-    "login-test": "npx cypress run  --spec 'cypress/e2e/spec.cy.js' --browser chrome"
+    "cypress": "npx cypress open",
+    "login-test": "npx cypress run  --spec 'cypress/e2e/Login.cy.js' --browser chrome"
   },
   "repository": {
     "type": "git",
