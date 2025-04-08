@@ -16,6 +16,32 @@
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
+Cypress.Commands.add('auth', (username, password) => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
+    cy.visit('https://www.saucedemo.com/', {timeout: 240000})
+      cy.get('[data-test="username"]').type(username)
+      cy.get('[data-test="password"]').type(password)
+      cy.get('[data-test="login-button"]').click()
+}); 
+
+// Try to create other Commands - pwedeng yung add to cart at checkout is gagawan natin ng commands
+Cypress.Commands.add('addCart', () => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
+    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
+    cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click();
+    cy.get('[data-test="shopping-cart-link"]').click();
+}); 
+
+Cypress.Commands.add('checkOut', (firstname, lastname, postcode) => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
+      cy.get('[data-test="checkout"]').click();
+      cy.get('[data-test="firstName"]').type(firstname);
+      cy.get('[data-test="lastName"]').type(lastname);
+      cy.get('[data-test="postalCode"]').type(postcode);
+      cy.get('[data-test="continue"]').click();
+      cy.get('[data-test="finish"]').click();
+}); 
+
+
+
+
 //
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
