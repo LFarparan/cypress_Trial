@@ -24,11 +24,11 @@ describe('E-Commerce Test Flow/Workflow', () => {
 
         // const currentDate = new Date().toISOString().replace(/[:]/g, '-');
         // cy.screenshot(testName+formattedDate, {capture: 'viewport'})
-        // cy.screenshot(testName + currentDate, {capture: 'viewport'});
+        // cy.screenstName + currentDate, {capture: 'viewport'});
         // const formattedDate = 
         //     `${ String(currentDate.getMonth() + 1).padStart(2, '0')}-${ 
         //         String(currentDate.getDate()).padStart(2, '0')}-${ 
-        //         String(currentDate.getFullYear()).slice(-2)}`
+        //         String(currentDate.getFullYear()).slice(-2)}`shot(te
         
         cy.get('[data-test="back-to-products"]').click();
     });

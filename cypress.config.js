@@ -3,6 +3,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
+    baseUrl: 'https://parabank.parasoft.com/parabank', // Replace with your base URL
     projectId: "a9wq9v",
     experimentalStudio: true,
     reporter: 'cypress-mochawesome-reporter',
@@ -18,3 +19,5 @@ module.exports = defineConfig({
     },
   },
 });
+
+
