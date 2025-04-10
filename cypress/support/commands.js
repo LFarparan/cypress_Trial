@@ -1,3 +1,5 @@
+const { faker } = require('@faker-js/faker');
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -41,20 +43,19 @@ Cypress.Commands.add('checkOut', (firstname, lastname, postcode) => { // FUNCTIO
       cy.get('[data-test="finish"]').click();
 }); 
 
-Cypress.Commands.add('fillRegForm', (username, password) => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
-    cy.get('[name = "customer.firstName"]').type('John')
-       cy.get('[name = "customer.lastName"]').type('Doe')
-       cy.get('[name = "customer.address.street"]').type('Kalayaan')
-       cy.get('[name = "customer.address.city"]').type('Imus')
-       cy.get('[name = "customer.address.state"]').type('Cavite')
-       cy.get('[name = "customer.address.zipCode"]').type('1231')
-       cy.get('[name = "customer.phoneNumber"]').type('091212121212')
-       cy.get('[name = "customer.ssn"]').type('12321')
-       cy.get('[name = "customer.username"]').type(username)
-       cy.get('[name = "customer.password"]').type(password)
-       cy.get('[name = "repeatedPassword"]').type(password)
+Cypress.Commands.add('fillRegForm', (user) => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
+    cy.get('[name = "customer.firstName"]').type(user.firstName)
+       cy.get('[name = "customer.lastName"]').type(user.lastName)
+       cy.get('[name = "customer.address.street"]').type(user.street)
+       cy.get('[name = "customer.address.city"]').type(user.city)
+       cy.get('[name = "customer.address.state"]').type(user.state)
+       cy.get('[name = "customer.address.zipCode"]').type(user.zipCode)
+       cy.get('[name = "customer.phoneNumber"]').type(user.phoneNumber)
+       cy.get('[name = "customer.ssn"]').type(user.ssn)
+       cy.get('[name = "customer.username"]').type(user.username)
+       cy.get('[name = "customer.password"]').type(user.password)
+       cy.get('[name = "repeatedPassword"]').type(user.password)
 }); 
-
 
 
 
