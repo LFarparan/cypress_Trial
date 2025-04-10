@@ -1,0 +1,129 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-04-10T00:56:22.328Z",
+    "end": "2025-04-10T00:56:34.036Z",
+    "duration": 11708,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2ff9d3d6-c622-46bb-ba97-2d6a88b45394",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Login.cy.js",
+      "file": "cypress\\e2e\\Login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1aff9465-6a09-48c4-8424-b3411adb7981",
+          "title": "Log In",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sucessful login with valid credentials",
+              "fullTitle": "Log In Sucessful login with valid credentials",
+              "timedOut": null,
+              "duration": 3259,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('[data-test=\"username\"]').type('standard_user');\ncy.get('[data-test=\"password\"]').type('secret_sauce');\ncy.get('[data-test=\"login-button\"]').click();\ncy.contains('Swag Labs').should('be.visible');\ncy.url().should(\"include\", '/inventory.html');",
+              "err": {},
+              "uuid": "7184f032-adf8-406a-abf7-92aa71512b4c",
+              "parentUUID": "1aff9465-6a09-48c4-8424-b3411adb7981",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Unsuccessful login with invalid login credentials",
+              "fullTitle": "Log In Unsuccessful login with invalid login credentials",
+              "timedOut": null,
+              "duration": 1903,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('[data-test=\"username\"]').type('standard_user');\ncy.get('[data-test=\"password\"]').type('ehetenandayo');\ncy.get('[data-test=\"login-button\"]').click();\ncy.get('[data-test=\"error\"]');\ncy.url().should(\"include\", 'saucedemo.com');",
+              "err": {},
+              "uuid": "85c6d7ca-9c09-45e3-a4c4-460418646963",
+              "parentUUID": "1aff9465-6a09-48c4-8424-b3411adb7981",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7184f032-adf8-406a-abf7-92aa71512b4c",
+            "85c6d7ca-9c09-45e3-a4c4-460418646963"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5162,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "custom-title",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

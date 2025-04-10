@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/LFarparan/cypress_Trial#readme",
   "devDependencies": {
-    "cypress": "^14.2.1",
+    "cypress": "^14.3.0",
     "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
