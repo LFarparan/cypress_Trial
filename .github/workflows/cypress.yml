@@ -41,7 +41,7 @@ jobs:
      
       # Step 5: Run login.cy.js test
       - name: Run login.cy.js test
-        run: npm run login-test
+        run: npm run test-suite
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

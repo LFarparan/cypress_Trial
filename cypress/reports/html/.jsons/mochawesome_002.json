@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-04-11T04:47:30.274Z",
+    "end": "2025-04-11T04:47:44.975Z",
+    "duration": 14701,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "991a7584-a1cd-418f-ab91-656afb24d376",
+      "title": "",
+      "fullFile": "cypress\\e2e\\ecom-flow.cy.js",
+      "file": "cypress\\e2e\\ecom-flow.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e67ece2f-4520-4cd1-98a3-a265e547a3c5",
+          "title": "E-Commerce Test Flow/Workflow",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify User Login",
+              "fullTitle": "E-Commerce Test Flow/Workflow Verify User Login",
+              "timedOut": null,
+              "duration": 3603,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('.app_logo').should('be.visible');",
+              "err": {},
+              "uuid": "2ec5b237-b5a0-48d7-acd6-c73e1b1b912c",
+              "parentUUID": "e67ece2f-4520-4cd1-98a3-a265e547a3c5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify Adding Products to Cart",
+              "fullTitle": "E-Commerce Test Flow/Workflow Verify Adding Products to Cart",
+              "timedOut": null,
+              "duration": 2019,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.addCart();",
+              "err": {},
+              "uuid": "022eb916-6f51-412e-9f96-13b71145aabd",
+              "parentUUID": "e67ece2f-4520-4cd1-98a3-a265e547a3c5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify Checkout Process",
+              "fullTitle": "E-Commerce Test Flow/Workflow Verify Checkout Process",
+              "timedOut": null,
+              "duration": 3613,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.addCart();\ncy.checkOut('John', 'Doe', 1231);\nconst testName = 'checkout-';\nconst date = new Date().toISOString();\nconst formattedDate = `${date.slice(5, 7)}-${date.slice(8, 10)}-${date.slice(2, 4)}`;\ncy.screenshot(testName + formattedDate, {\n  capture: 'viewport'\n});\ncy.get('[data-test=\"back-to-products\"]').click();",
+              "err": {},
+              "uuid": "74027823-2e6d-496b-ad28-745dd0550a60",
+              "parentUUID": "e67ece2f-4520-4cd1-98a3-a265e547a3c5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2ec5b237-b5a0-48d7-acd6-c73e1b1b912c",
+            "022eb916-6f51-412e-9f96-13b71145aabd",
+            "74027823-2e6d-496b-ad28-745dd0550a60"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9235,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "custom-title",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
