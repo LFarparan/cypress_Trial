@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "cypress": "npx cypress open",
+    "test-suite": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/*.cy.js' --browser chrome",
     "login-test": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/Login.cy.js' --browser chrome",
-    "ecom-test": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/ecom-flow.cy.js' --browser chrome"
+    "ecom-test": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/ecom-flow.cy.js' --browser chrome",
+    "reg-test": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/register.cy.js' --browser chrome"
   },
   "repository": {
     "type": "git",
