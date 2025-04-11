@@ -1,23 +1,3 @@
-const { faker } = require('@faker-js/faker');
-
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
 Cypress.Commands.add('auth', (username, password) => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
     cy.visit('https://www.saucedemo.com/', {timeout: 240000})
       cy.get('[data-test="username"]').type(username)
@@ -27,7 +7,6 @@ Cypress.Commands.add('auth', (username, password) => { // FUNCTION OR METHOD -->
       cy.get('[data-test="login-button"]').click()
 }); 
 
-// Try to create other Commands - pwedeng yung add to cart at checkout is gagawan natin ng commands
 Cypress.Commands.add('addCart', () => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
     cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click();
@@ -56,13 +35,3 @@ Cypress.Commands.add('fillRegForm', (user) => { // FUNCTION OR METHOD --> Then i
        cy.get('[name = "customer.password"]').type(user.password)
        cy.get('[name = "repeatedPassword"]').type(user.password)
 }); 
-
-
-
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
