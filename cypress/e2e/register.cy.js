@@ -1,4 +1,4 @@
-import createUser from '../support/utils.js'
+import createUser from "../support/utils";
 
 describe('Parabank Registration', () => {
     before(()=>{
@@ -11,7 +11,6 @@ describe('Parabank Registration', () => {
             cy.fillRegForm(newUser)
             cy.get('[value = "Register"]').click()
         })
-        
      })
 
     it('Verify Login', () => {
