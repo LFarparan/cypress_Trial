@@ -35,3 +35,44 @@ Cypress.Commands.add('fillRegForm', (user) => { // FUNCTION OR METHOD --> Then i
        cy.get('[name = "customer.password"]').type(user.password)
        cy.get('[name = "repeatedPassword"]').type(user.password)
 }); 
+
+Cypress.Commands.add('restoreCart', () => {
+    const cart = Cypress.env('savedCart') || '[]';
+    cy.window().then((win) => {
+      win.localStorage.setItem('cart-contents', cart);
+    });
+  });
+
+Cypress.Commands.add('saveCart', () => {
+    cy.window().then((win) => {
+      const cart = win.localStorage.getItem('cart-contents') || '[]';
+      Cypress.env('savedCart', cart);
+    });
+});
+
+Cypress.Commands.add('registerUser', (user) => {
+  cy.get('.modal-body > :nth-child(2) > a > u').click()
+  cy.get('[data-qa="signup-name"]').type(user.username)
+  cy.get('[data-qa="signup-email"]').type(user.email)
+  cy.get('[data-qa="signup-button"]').click()
+  cy.get('[value="Mr"]').click()
+  cy.get('[data-qa="password"]').type(user.password)
+  cy.get('[data-qa="days"]').select(user.day)
+  cy.get('[data-qa="months"]').select(user.month)
+  cy.get('[data-qa="years"]').select(user.year)
+  cy.get('[data-qa="first_name"]').type(user.firstName)
+  cy.get('[data-qa="last_name"]').type(user.lastName)
+  cy.get('[data-qa="company"]').type(user.company)
+  cy.get('[data-qa="address"]').type(user.address)
+  cy.get('[data-qa="address2"]').type(user.address2)
+  cy.get('[data-qa="country"]').select(user.country)
+  cy.get('[data-qa="state"]').type(user.state)
+  cy.get('[data-qa="city"]').type(user.city)
+  cy.get('[data-qa="zipcode"]').type(user.zipCode)
+  cy.get('[data-qa="mobile_number"]').type(user.phoneNumber)
+  cy.get('[data-qa="create-account"]').click()
+});
+
+Cypress.Commands.add('hmmm', (user) => {
+  
+});
