@@ -51,7 +51,6 @@ Cypress.Commands.add('saveCart', () => {
 });
 
 Cypress.Commands.add('registerUser', (user) => {
-  cy.get('.modal-body > :nth-child(2) > a > u').click()
   cy.get('[data-qa="signup-name"]').type(user.username)
   cy.get('[data-qa="signup-email"]').type(user.email)
   cy.get('[data-qa="signup-button"]').click()
