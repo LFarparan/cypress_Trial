@@ -1,3 +1,6 @@
+import RegistrationPage from './pages/registration.page';
+import createUser from '../support/utils.js';
+
 Cypress.Commands.add('auth', (username, password) => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
     cy.visit('https://www.saucedemo.com/', {timeout: 240000})
       cy.get('[data-test="username"]').type(username)
@@ -72,6 +75,40 @@ Cypress.Commands.add('registerUser', (user) => {
   cy.get('[data-qa="create-account"]').click()
 });
 
-Cypress.Commands.add('hmmm', (user) => {
-  
+Cypress.Commands.add('enterCard', (user) => {
+  cy.get('[data-qa="name-on-card"]').type(user.firstName + " " + user.lastName)
+  cy.get('[data-qa="card-number"]').type(user.cardNumber)
+  cy.get('[data-qa="cvc"]').type(user.cvc)
+  cy.get('[data-qa="expiry-month"]').type(user.exmonth)
+  cy.get('[data-qa="expiry-year"]').type(user.exyear)
+
+  cy.get('form#payment-form').then(($form) => {
+     $form[0].addEventListener('submit', (e) => {
+       e.preventDefault(); // Prevent the first submission only
+     }, { once: true }); // This makes it fire only ONCE
+  });
+            
+  cy.get('[data-qa="pay-button"]').click()
+  cy.get('#success_message > .alert-success').should('contain',
+      ('Your order has been placed successfully!'))
+  cy.get('[data-qa="pay-button"]').click()
+  cy.get('.col-sm-9 > p').should('contain',
+      'Congratulations! Your order has been confirmed!')
+});
+
+Cypress.Commands.add('cardValidation', (user) => {
+  cy.get('#address_delivery > .address_firstname').should('contain',`Mr. ${user.firstName} ${user.lastName}`)
+  cy.get('#address_delivery > :nth-child(3)').should('contain', user.company)
+  cy.get('#address_delivery > :nth-child(4)').should('contain', user.address)
+  cy.get('#address_delivery > :nth-child(5)').should('contain', user.address2)
+  cy.get('#address_delivery > .address_city').should('contain',user.city)
+  cy.get('#address_delivery > .address_city').should('contain',user.state)
+  cy.get('#address_delivery > .address_city').should('contain',user.zipCode)
+  cy.get('#address_delivery > .address_country_name').should('contain', user.country)
+});
+
+Cypress.Commands.add('fillRegistrationForm', (customerData = generateCustomerData()) => {
+  RegistrationPage.fillSignUpForm(customerData);
+  RegistrationPage.submitSignUpForm();
+  RegistrationPage.verifySignUpSuccess(customerData.username);
 });
