@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-04-15T00:13:45.274Z",
+    "end": "2025-04-15T00:14:24.246Z",
+    "duration": 38972,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1c892f34-b4e5-454f-97a9-87d610976473",
+      "title": "",
+      "fullFile": "cypress\\e2e\\automation-exercise\\testcase15.cy.js",
+      "file": "cypress\\e2e\\automation-exercise\\testcase15.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a44c64f3-de4c-44bc-acbb-18c9d2d74d33",
+          "title": "Automation Exercise 15",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify registration before checkout",
+              "fullTitle": "Automation Exercise 15 Verify registration before checkout",
+              "timedOut": null,
+              "duration": 30056,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('automationUser').then(user => {\n  cy.visit('http://automationexercise.com');\n  cy.get('a > img').should('be.visible');\n  cy.url().should('include', '/automationexercise.com');\n  // Sign Up & Log In\n  cy.get('.shop-menu > .nav > :nth-child(4) > a').click();\n  cy.registerUser(user);\n  cy.url().should('include', '/account_created');\n  cy.get('[data-qa=\"continue-button\"]').click();\n  cy.get(':nth-child(10) > a').should('contain', `Logged in as ${user.username}`);\n  // Add cart\n  cy.get('.features_items > :nth-child(3) > .product-image-wrapper > .single-products > .productinfo > .btn').click();\n  cy.get('.modal-footer > .btn').click();\n  cy.get(':nth-child(4) > .product-image-wrapper > .single-products > .productinfo > .btn').click();\n  cy.get('.modal-footer > .btn').click();\n  cy.get('.shop-menu > .nav > :nth-child(3) > a').click();\n  // Checkout\n  cy.get('.col-sm-6 > .btn').click();\n  cy.cardValidation(user);\n  cy.get('#product-1 > .cart_description > h4 > a').should('contain', 'Blue Top');\n  cy.get('.form-control').type('Commenting for the sake of testing...');\n  cy.get(':nth-child(7) > .btn').click();\n  //Payment\n  cy.enterCard(user);\n  // Delete Account\n  cy.get(':nth-child(5) > a').click();\n  cy.get('b').contains('Account Deleted!');\n  cy.get('[data-qa=\"continue-button\"]').click();\n});",
+              "err": {},
+              "uuid": "147202fc-1f04-490e-948e-0652a8079746",
+              "parentUUID": "a44c64f3-de4c-44bc-acbb-18c9d2d74d33",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "147202fc-1f04-490e-948e-0652a8079746"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 30056,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "custom-title",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -23,21 +23,7 @@ Cypress.Commands.add('checkOut', (firstname, lastname, postcode) => { // FUNCTIO
       cy.get('[data-test="postalCode"]').type(postcode);
       cy.get('[data-test="continue"]').click();
       cy.get('[data-test="finish"]').click();
-}); 
-
-Cypress.Commands.add('fillRegForm', (user) => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
-    cy.get('[name = "customer.firstName"]').type(user.firstName)
-       cy.get('[name = "customer.lastName"]').type(user.lastName)
-       cy.get('[name = "customer.address.street"]').type(user.street)
-       cy.get('[name = "customer.address.city"]').type(user.city)
-       cy.get('[name = "customer.address.state"]').type(user.state)
-       cy.get('[name = "customer.address.zipCode"]').type(user.zipCode)
-       cy.get('[name = "customer.phoneNumber"]').type(user.phoneNumber)
-       cy.get('[name = "customer.ssn"]').type(user.ssn)
-       cy.get('[name = "customer.username"]').type(user.username)
-       cy.get('[name = "customer.password"]').type(user.password)
-       cy.get('[name = "repeatedPassword"]').type(user.password)
-}); 
+});  
 
 Cypress.Commands.add('restoreCart', () => {
     const cart = Cypress.env('savedCart') || '[]';
@@ -81,13 +67,11 @@ Cypress.Commands.add('enterCard', (user) => {
   cy.get('[data-qa="cvc"]').type(user.cvc)
   cy.get('[data-qa="expiry-month"]').type(user.exmonth)
   cy.get('[data-qa="expiry-year"]').type(user.exyear)
-
   cy.get('form#payment-form').then(($form) => {
      $form[0].addEventListener('submit', (e) => {
        e.preventDefault(); // Prevent the first submission only
      }, { once: true }); // This makes it fire only ONCE
-  });
-            
+  });      
   cy.get('[data-qa="pay-button"]').click()
   cy.get('#success_message > .alert-success').should('contain',
       ('Your order has been placed successfully!'))
@@ -107,7 +91,7 @@ Cypress.Commands.add('cardValidation', (user) => {
   cy.get('#address_delivery > .address_country_name').should('contain', user.country)
 });
 
-Cypress.Commands.add('fillRegistrationForm', (customerData = generateCustomerData()) => {
+Cypress.Commands.add('fillRegistrationForm', (customerData) => {
   RegistrationPage.fillSignUpForm(customerData);
   RegistrationPage.submitSignUpForm();
   RegistrationPage.verifySignUpSuccess(customerData.username);

@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-04-15T00:12:41.603Z",
+    "end": "2025-04-15T00:13:34.990Z",
+    "duration": 53387,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "72f50973-f648-4688-acf0-1c1c77fa239e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\automation-exercise\\testcase14.cy.js",
+      "file": "cypress\\e2e\\automation-exercise\\testcase14.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e4caa0b0-692f-49c5-8a04-57dd0dd93033",
+          "title": "Automation Exercise 14",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify registration while checkout",
+              "fullTitle": "Automation Exercise 14 Verify registration while checkout",
+              "timedOut": null,
+              "duration": 36911,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture('automationUser').then(user => {\n  cy.visit('http://automationexercise.com');\n  cy.get('a > img').should('be.visible');\n  cy.get('[alt=\"Website for automation practice\"]');\n  // Add cart\n  cy.get('.features_items > :nth-child(3) > .product-image-wrapper > .single-products > .productinfo > .btn').click();\n  cy.get('.modal-footer > .btn').click();\n  cy.get(':nth-child(4) > .product-image-wrapper > .single-products > .productinfo > .btn').click();\n  cy.get('.modal-footer > .btn').click();\n  //Failed checkout\n  cy.get('.shop-menu > .nav > :nth-child(3) > a').click();\n  cy.url().should('include', '/view_cart');\n  cy.get('.col-sm-6 > .btn').click();\n  //Register\n  cy.get('.modal-body > :nth-child(2) > a > u').click();\n  cy.registerUser(user);\n  cy.url().should('include', '/account_created');\n  cy.get('[data-qa=\"continue-button\"]').click();\n  // Order Validation\n  cy.get(':nth-child(10) > a').should('contain', `Logged in as ${user.username}`);\n  cy.get('.shop-menu > .nav > :nth-child(3) > a').click();\n  cy.get('.col-sm-6 > .btn').click();\n  cy.cardValidation(user);\n  cy.get('#product-1 > .cart_description > h4 > a').should('contain', 'Blue Top');\n  cy.get('.form-control').type('Commenting for the sake of testing...');\n  cy.get(':nth-child(7) > .btn').click();\n  //Payment\n  cy.enterCard(user);\n  // Delete Account\n  cy.get(':nth-child(5) > a').click();\n  cy.get('b').contains('Account Deleted!');\n  cy.get('[data-qa=\"continue-button\"]').click();\n});",
+              "err": {},
+              "uuid": "35a14b84-103b-49da-8c3b-0250349b08be",
+              "parentUUID": "e4caa0b0-692f-49c5-8a04-57dd0dd93033",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "35a14b84-103b-49da-8c3b-0250349b08be"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 36911,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "reportPageTitle": "custom-title",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
