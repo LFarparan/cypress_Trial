@@ -1,4 +1,4 @@
-import createUser from "../support/utils";
+import createUser from "../../support/utils";
 
 describe('Parabank Registration', () => {
     before(()=>{
