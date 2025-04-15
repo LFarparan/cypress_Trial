@@ -11,7 +11,6 @@ module.exports = defineConfig({
   reporter: "cypress-mochawesome-reporter",
 
   reporterOptions: {
-    reportDir: "cypress/reports",
     charts: true,
     reportPageTitle: "custom-title",
     embeddedScreenshots: true,
