@@ -2,21 +2,31 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  e2e: {
-    baseUrl: 'https://parabank.parasoft.com/parabank', // Replace with your base URL
-    projectId: "a9wq9v",
-    experimentalStudio: true,
-    reporter: 'cypress-mochawesome-reporter',
-    reporterOptions: {
-      charts: true,
-      reportPageTitle: 'custom-title',
-      embeddedScreenshots: true,
-      inlineAssets: true,
-      saveAllAttempts: false,
+  projectId: "a9wq9v",
+  experimentalStudio: true,
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'custom-title',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+    e2e: {
+      //baseUrl: 'https://parabank.parasoft.com/parabank', // Replace with your base URL
+      setupNodeEvents(on, config) {
+        const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
+        on('before:run', async (details) => {
+          console.log('override before:run');
+          console.log('Running tests');
+          await beforeRunHook(details);
+        });
+        on('after:run', async () => {
+          console.log('override after:run');
+          await afterRunHook();
+        });
+      },
     },
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+
   },
 });
 
