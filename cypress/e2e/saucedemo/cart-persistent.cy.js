@@ -22,8 +22,10 @@ describe('Cart Persistence Test', () => {
 
             cy.auth('standard_user', 'secret_sauce')
         });
+
         it('should show the item in the cart after login', () => {
             cy.get('.shopping_cart_badge').should('contain', '1');
+            cy.takeScreenshot('cartPersist-')
         });
     });
 });

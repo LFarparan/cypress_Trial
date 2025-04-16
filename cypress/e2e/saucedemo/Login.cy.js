@@ -4,18 +4,16 @@ describe('Log In', () => {
   });
 
   it('Sucessful login with valid credentials', () => {
-    cy.get('[data-test="username"]').type('standard_user')
-    cy.get('[data-test="password"]').type('secret_sauce')
-    cy.get('[data-test="login-button"]').click()
+    cy.auth('standard_user', 'secret_sauce')
+    cy.takeScreenshot('login-')
     cy.contains('Swag Labs').should('be.visible')
     cy.url().should("include", '/inventory.html')
   })
 
   it('Unsuccessful login with invalid login credentials', () => {
-    cy.get('[data-test="username"]').type('standard_user')
-    cy.get('[data-test="password"]').type('ehetenandayo')
-    cy.get('[data-test="login-button"]').click()
-    cy.get('[data-test="error"]')
+    cy.auth('standard_user', 'invalid_pass')
+    cy.get('[data-test="error"]').should('contain', 'Epic sadface')
+    cy.takeScreenshot('invalid_login-')
     cy.url().should("include", 'saucedemo.com')
   })
 
