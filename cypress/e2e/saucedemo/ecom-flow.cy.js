@@ -8,11 +8,11 @@ describe('E-Commerce Test Flow/Workflow', () => {
     });
 
   
-    it('Verify Adding Products to Cart', () => {
+    it('Verify adding products to Cart', () => {
       cy.addCart()
     });
 
-    it('Verify Checkout Process', () => {
+    it('Verify checkout process', () => {
         cy.addCart()
         cy.checkOut('John', 'Doe', 1231)
         cy.takeScreenshot('checkout-')     
