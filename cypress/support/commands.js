@@ -46,42 +46,45 @@ Cypress.Commands.add('saveCart', () => {
 });
 
 Cypress.Commands.add('registerUser', (user) => {
-  cy.get('[data-qa="signup-name"]').type(user.username)
-  cy.get('[data-qa="signup-email"]').type(user.email)
-  cy.get('[data-qa="signup-button"]').click()
-  cy.get('[value="Mr"]').click()
-  cy.get('[data-qa="password"]').type(user.password)
-  cy.get('[data-qa="days"]').select(user.day)
+  cy.get('[data-qa="signup-name"]').type(user.username).should('have.value', user.username)
+  cy.get('[data-qa="signup-email"]').type(user.email).should('have.value', user.email)
+  cy.get('[data-qa="signup-button"]').should('be.visible').and('contain', 'Signup').click()
+  cy.get('[value="Mr"]').should('be.visible').and('have.value', 'Mr').click()
+  cy.get('[data-qa="password"]').type(user.password).should('have.value', user.password)
+  cy.get('[data-qa="days"]').select(user.day).should('have.value', user.day)
   cy.get('[data-qa="months"]').select(user.month)
-  cy.get('[data-qa="years"]').select(user.year)
-  cy.get('[data-qa="first_name"]').type(user.firstName)
-  cy.get('[data-qa="last_name"]').type(user.lastName)
-  cy.get('[data-qa="company"]').type(user.company)
-  cy.get('[data-qa="address"]').type(user.address)
-  cy.get('[data-qa="address2"]').type(user.address2)
-  cy.get('[data-qa="country"]').select(user.country)
-  cy.get('[data-qa="state"]').type(user.state)
-  cy.get('[data-qa="city"]').type(user.city)
-  cy.get('[data-qa="zipcode"]').type(user.zipCode)
-  cy.get('[data-qa="mobile_number"]').type(user.phoneNumber)
-  cy.get('[data-qa="create-account"]').click()
+  cy.get('[data-qa="years"]').select(user.year).should('have.value', user.year)
+  cy.get('[data-qa="first_name"]').type(user.firstName).should('have.value', user.firstName)
+  cy.get('[data-qa="last_name"]').type(user.lastName).should('have.value', user.lastName)
+  cy.get('[data-qa="company"]').type(user.company).should('have.value', user.company)
+  cy.get('[data-qa="address"]').type(user.address).should('have.value', user.address)
+  cy.get('[data-qa="address2"]').type(user.address2).should('have.value', user.address2)
+  cy.get('[data-qa="country"]').select(user.country).should('have.value', user.country)
+  cy.get('[data-qa="state"]').type(user.state).should('have.value', user.state)
+  cy.get('[data-qa="city"]').type(user.city).should('have.value', user.city)
+  cy.get('[data-qa="zipcode"]').type(user.zipCode).should('have.value', user.zipCode)
+  cy.get('[data-qa="mobile_number"]').type(user.phoneNumber).should('have.value', user.phoneNumber)
+  cy.get('[data-qa="create-account"]').should('be.visible').and('contain', 'Create Account').click()
 });
 
 Cypress.Commands.add('enterCard', (user) => {
   cy.get('[data-qa="name-on-card"]').type(user.firstName + " " + user.lastName)
-  cy.get('[data-qa="card-number"]').type(user.cardNumber)
-  cy.get('[data-qa="cvc"]').type(user.cvc)
-  cy.get('[data-qa="expiry-month"]').type(user.exmonth)
-  cy.get('[data-qa="expiry-year"]').type(user.exyear)
+  .should('have.value', user.firstName + " " + user.lastName)
+  cy.get('[data-qa="card-number"]').type(user.cardNumber).should('have.value', user.cardNumber)
+  cy.get('[data-qa="cvc"]').type(user.cvc).should('have.value', user.cvc)
+  cy.get('[data-qa="expiry-month"]').type(user.exmonth).should('have.value', user.exmonth)
+  cy.get('[data-qa="expiry-year"]').type(user.exyear).should('have.value', user.exyear)
   cy.get('form#payment-form').then(($form) => {
     $form[0].addEventListener('submit', (e) => {
       e.preventDefault(); // Prevent the first submission only
     }, { once: true }); // This makes it fire only ONCE
   });
-  cy.get('[data-qa="pay-button"]').click()
+  cy.get('[data-qa="pay-button"]').should('be.visible')
+  .and('contain', 'Pay and Confirm Order').click()
   cy.get('#success_message > .alert-success').should('contain',
     ('Your order has been placed successfully!'))
-  cy.get('[data-qa="pay-button"]').click()
+  cy.get('[data-qa="pay-button"]').should('be.visible')
+  .and('contain', 'Pay and Confirm Order').click()
   cy.get('.col-sm-9 > p').should('contain',
     'Congratulations! Your order has been confirmed!')
 });

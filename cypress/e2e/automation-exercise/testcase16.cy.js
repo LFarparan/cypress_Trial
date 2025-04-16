@@ -19,32 +19,35 @@ describe('Automation Exercise 16', () => {
 
             // Log In
             cy.get('.shop-menu > .nav > :nth-child(4) > a').click()
-            cy.get('[data-qa="login-email"]').type(user.email)
-            cy.get('[data-qa="login-password"]').type(user.password)
-            cy.get('[data-qa="login-button"]').click()
-            cy.get(':nth-child(10) > a').should('contain',`Logged in as ${user.username}`)
+            cy.get('[data-qa="login-email"]').type(user.email).should('have.value', user.email)
+            cy.get('[data-qa="login-password"]').type(user.password).should('have.value', user.password)
+            cy.get('[data-qa="login-button"]').should('be.visible').click()
+            cy.get(':nth-child(10) > a').should('be.visible').and('contain',`Logged in as ${user.username}`)
 
             // Add cart
-            cy.get('.features_items > :nth-child(3) > .product-image-wrapper > .single-products > .productinfo > .btn').click()
-            cy.get('.modal-footer > .btn').click()
-            cy.get(':nth-child(4) > .product-image-wrapper > .single-products > .productinfo > .btn').click()
-            cy.get('.modal-footer > .btn').click()
-            cy.get('.shop-menu > .nav > :nth-child(3) > a').click()
+            cy.get('.features_items > :nth-child(3) > .product-image-wrapper > .single-products > .productinfo > .btn')
+            .should('be.visible').click()
+            cy.get('.modal-footer > .btn').should('be.visible').click()
+            cy.get(':nth-child(4) > .product-image-wrapper > .single-products > .productinfo > .btn')
+            .should('be.visible').click()
+            cy.get('.modal-footer > .btn').should('be.visible').click()
+            cy.get('.shop-menu > .nav > :nth-child(3) > a').should('be.visible').click()
 
             // Checkout
-            cy.get('.col-sm-6 > .btn').click()
+            cy.get('.col-sm-6 > .btn').should('be.visible').click()
             cy.cardValidation(user)
             cy.get('#product-1 > .cart_description > h4 > a').should('contain','Blue Top')
-            cy.get('.form-control').type('Commenting for the sake of testing...')
-            cy.get(':nth-child(7) > .btn').click()
+            cy.get('.form-control').type('Sample comment for Testing...')
+            .should('have.value', 'Sample comment for Testing...')
+            cy.get(':nth-child(7) > .btn').should('be.visible').click()
 
             //Payment
             cy.enterCard(user)
 
             // Delete Account
-            cy.get(':nth-child(5) > a').click()
+            cy.get(':nth-child(5) > a').should('be.visible').click()
             cy.get('b').contains('Account Deleted!')
-            cy.get('[data-qa="continue-button"]').click()
+            cy.get('[data-qa="continue-button"]').should('be.visible').click()
         })
     });
 });
