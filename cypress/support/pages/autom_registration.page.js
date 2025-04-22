@@ -45,19 +45,19 @@ class Autom_Registration {
   fillRegForm(user) {
     this.elements.honorifics().click();
     this.elements.password().type(user.password),
-      this.elements.day().select(user.day),
-      this.elements.month().select(user.month),
-      this.elements.year().select(user.year),
-      this.elements.firstName().type(user.firstName),
-      this.elements.lastName().type(user.lastName),
-      this.elements.company().type(user.company),
-      this.elements.address().type(user.address),
-      this.elements.address2().type(user.address2),
-      this.elements.country().select(user.country),
-      this.elements.state().type(user.state),
-      this.elements.city().type(user.city),
-      this.elements.zipCode().type(user.zipCode),
-      this.elements.phoneNumber().type(user.phoneNumber)
+    this.elements.day().select(user.day),
+    this.elements.month().select(user.month),
+    this.elements.year().select(user.year),
+    this.elements.firstName().type(user.firstName),
+    this.elements.lastName().type(user.lastName),
+    this.elements.company().type(user.company),
+    this.elements.address().type(user.address),
+    this.elements.address2().type(user.address2),
+    this.elements.country().select(user.country),
+    this.elements.state().type(user.state),
+    this.elements.city().type(user.city),
+    this.elements.zipCode().type(user.zipCode),
+    this.elements.phoneNumber().type(user.phoneNumber)
   }
 
   fillRegCredentials(user) {
