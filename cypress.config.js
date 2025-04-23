@@ -5,6 +5,7 @@ const {
   afterRunHook,
 } = require("cypress-mochawesome-reporter/lib");
 
+
 module.exports = defineConfig({
   projectId: "a9wq9v",
   experimentalStudio: true,

@@ -32,7 +32,7 @@ describe('Pet Store API Tests', () => {
         }).should((response) => {
             expect(response.status).to.eq(200)
             petId = response.body.id
-            
+
         })
     })
 
@@ -66,33 +66,32 @@ describe('Pet Store API Tests', () => {
             expect(response.body.message).to.eq(String(petId))
         })
     })
-
-
 })
 
+
 describe('Petstore User API Tests', () => {
-    const fake_user =[{
-          "id": 8,
-          "username": faker.internet.username(),
-          "firstName": faker.person.firstName(),
-          "lastName": faker.person.lastName(),
-          "email": faker.internet.email(),
-          "password": faker.internet.password(),
-          "phone": faker.phone.number(),
-          "userStatus": 0
-        },
+    const fake_user = [{
+        "id": 8,
+        "username": faker.internet.username(),
+        "firstName": faker.person.firstName(),
+        "lastName": faker.person.lastName(),
+        "email": faker.internet.email(),
+        "password": faker.internet.password(),
+        "phone": faker.phone.number(),
+        "userStatus": 0
+    },
     ]
 
     const UpdatedUser = {
-          "id": 9,
-          "username": faker.internet.username(),
-          "firstName": faker.person.firstName(),
-          "lastName": faker.person.lastName(),
-          "email": faker.internet.email(),
-          "password": faker.internet.password(),
-          "phone": faker.phone.number(),
-          "userStatus": 0
-        }
+        "id": 9,
+        "username": faker.internet.username(),
+        "firstName": faker.person.firstName(),
+        "lastName": faker.person.lastName(),
+        "email": faker.internet.email(),
+        "password": faker.internet.password(),
+        "phone": faker.phone.number(),
+        "userStatus": 0
+    }
 
     it('POST - Creating new User with List', () => {
         cy.api({
@@ -182,16 +181,4 @@ describe('Petstore User API Tests', () => {
         })
     })
 
-
-
-    
-
-
-
-
-
-
-
-
-    
 })
