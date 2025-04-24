@@ -29,6 +29,7 @@ module.exports = defineConfig({
 
   e2e: {
     //baseUrl: 'https://parabank.parasoft.com/parabank', // Replace with your base URL
+    excludeSpecPattern: ["cypress/e2e/localhost/*.cy.js"],
     setupNodeEvents(on, config) {
 
       on("before:run", async (details) => {
