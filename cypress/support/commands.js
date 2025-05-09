@@ -4,8 +4,8 @@ import Autom_AddCard from './pages/autom_addCard.page';
 import Autom_CheckoutValidation from './pages/autom_checkoutValidation.page';
 
 // SAUCEDEMO commands
-Cypress.Commands.add('auth', (username, password) => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
-  cy.visit('https://www.saucedemo.com/', { timeout: 240000 })
+Cypress.Commands.add('auth', (username, password) => {
+  cy.visit('/', { timeout: 240000 })
   cy.get('[data-test="username"]').type(username)
     .should('to.have', username)
   cy.get('[data-test="password"]').type(password)
@@ -14,7 +14,7 @@ Cypress.Commands.add('auth', (username, password) => { // FUNCTION OR METHOD -->
 });
 
 
-Cypress.Commands.add('addCart', () => { // FUNCTION OR METHOD --> Then i-call natin sya sa spec or test file natin.
+Cypress.Commands.add('addCart', () => { 
   cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
   cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click();
   cy.get('[data-test="shopping-cart-link"]').click();

@@ -6,14 +6,14 @@ describe('Parabank Registration', () => {
     })
 
     it('Verify User Registration', () => {
-        cy.visit('https://parabank.parasoft.com/parabank/register.htm')
+        cy.visit('/register.htm')
         cy.fixture('testData').then((newUser) => {
             cy.fillRegistrationForm(newUser)
         })
     })
 
     it('Verify Login', () => {
-        cy.visit('https://parabank.parasoft.com/parabank/register.htm')
+        cy.visit('/register.htm')
         cy.fixture('testData').then((newUser) => {
             cy.get('[name="username"]').type(newUser.username)
             cy.get('[name="password"]').type(newUser.password)

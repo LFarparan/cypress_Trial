@@ -1,6 +1,6 @@
 describe('Log In Test', () => {
   beforeEach(() => {
-    cy.visit('https://www.saucedemo.com/'); // Runs before every test
+    cy.visit('/'); // Runs before every test
   });
 
   it('Verify sucessful login with valid credentials', () => {

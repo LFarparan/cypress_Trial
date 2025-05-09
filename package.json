@@ -6,8 +6,15 @@
   "scripts": {
     "cypress": "npx cypress open",
     "test-suite": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/**/*.cy.js' --browser chrome",
-    "login-test": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/saucedemo/login.cy.js' --browser chrome",
-    "ecom-test": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/saucedemo/ecom-flow.cy.js' --browser chrome",
+    "cy-saucedemo": "npx cypress open --config-file saucedemo.config.js",
+    "cy-parabank": "npx cypress open --config-file parabank.config.js",
+    "cy-datatest": "npx cypress open --config-file data-tables.config.js",
+    "sauce-test": "npx cypress run --config-file saucedemo.config.js --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/saucedemo/*.cy.js' --browser chrome",
+    "parabank-test": "npx cypress run --headed --config-file parabank.config.js --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/parabank/*.cy.js' --browser chrome",
+    "datatest-test": "npx cypress run --headed --config-file data-tables.config.js --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/data-tables-net/*.cy.js' --browser chrome",
+
+    
+    "login-tst": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/saucedemo/login.cy.js' --browser chrome",
     "reg-test": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/parabank/register.cy.js' --browser chrome",
     "autom-16": "npx cypress run --spec 'cypress/e2e/automation-exercise/testcase16.cy.js' --browser chrome",
     "autom-ex": "npx cypress run --record --key 51e42f93-e470-4b70-a2be-25c86e017030 --spec 'cypress/e2e/automation-exercise/*.cy.js' --browser chrome"
@@ -25,7 +32,7 @@
   "homepage": "https://github.com/LFarparan/cypress_Trial#readme",
   "devDependencies": {
     "@faker-js/faker": "^9.6.0",
-    "cypress": "^14.3.0",
+    "cypress": "^14.3.3",
     "cypress-mochawesome-reporter": "^3.8.2"
   },
   "dependencies": {
