@@ -1,4 +1,4 @@
-describe.skip('Verify that the webpage loads properly', () => {
+describe('Verify that the webpage loads properly', () => {
     it('Should successfully visit the website', () => {
         cy.viewport(850, 650)
         cy.visit('https://datatables.net/')
@@ -7,7 +7,7 @@ describe.skip('Verify that the webpage loads properly', () => {
 })
 
 
-describe.skip("Verify the table's pagination", () => {
+describe("Verify the table's pagination", () => {
     beforeEach(() => {
         cy.viewport(850, 650)
         cy.visit('https://datatables.net/')
@@ -34,7 +34,7 @@ describe.skip("Verify the table's pagination", () => {
     })
 })
 
-describe.skip('Verify the table sort functionality', () => {
+describe('Verify the table sort functionality', () => {
     beforeEach(() => {
         cy.viewport(850, 650)
         cy.visit('https://datatables.net/')
